@@ -1,1 +1,6 @@
+# Folders
+__pycache__/
 venv/
+
+# Files
+test.txt
