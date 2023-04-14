@@ -1,11 +1,10 @@
-from typing import Tuple
-from httpx import Response
 from datetime import datetime
+from httpx import Response
 
 
 class FilterForecastJob:
     @staticmethod
-    def execute(data: Tuple[Response, datetime]) -> dict:
+    def execute(data: tuple[Response, datetime]) -> dict:
         response, timestamp = data
         hourly_entries = response.json()["hourly"]
 

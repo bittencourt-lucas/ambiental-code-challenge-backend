@@ -1,11 +1,8 @@
-from typing import Tuple
 from decouple import config
 from google.cloud.firestore_v1 import Client
 from google.oauth2 import service_account
-from httpx import Response
-from datetime import datetime
 
-CREDENTIALS_FILE: str = config("GOOGLE_APPLICATION_CREDENTIALS")
+CREDENTIALS_FILE = config("GOOGLE_APPLICATION_CREDENTIALS")
 
 
 class StoreInFirestoreJob:
