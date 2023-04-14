@@ -1,3 +1,4 @@
+from datetime import datetime
 from httpx import get, Response
 from app.runner.job_runner import JobRunner
 
@@ -11,7 +12,8 @@ PRAIA_DE_JOAQUINA_PARAMS: dict = {
 
 class FetchForecastJob(JobRunner):
     @staticmethod
-    def execute() -> Response:
+    def execute() -> tuple:
         response: Response = get(
             url=OPEN_METEO_URL, params=PRAIA_DE_JOAQUINA_PARAMS)
-        return response
+        timestamp: datetime = datetime.now()
+        return (response, timestamp)
