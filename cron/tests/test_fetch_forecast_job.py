@@ -1,4 +1,5 @@
 import pytest
+from httpx import Response
 from app.jobs.fetch_forecast_job import FetchForecastJob
 
 
@@ -23,7 +24,7 @@ def test_fetch_forecast_job(mock_response):
     data: dict = {"mock_info": "mock"}
     status_code: int = 200
 
-    result = FetchForecastJob.execute()
+    result: Response = FetchForecastJob.execute()
 
     assert result.json() == data
     assert result.status_code == status_code
