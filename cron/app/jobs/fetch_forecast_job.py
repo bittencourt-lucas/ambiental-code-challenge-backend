@@ -10,7 +10,7 @@ PRAIA_DE_JOAQUINA_PARAMS: dict = {
 
 class FetchForecastJob:
     @staticmethod
-    def execute():
+    def execute() -> Response:
         response: Response = get(
             url=OPEN_METEO_URL, params=PRAIA_DE_JOAQUINA_PARAMS)
-        print(response.text)
+        return response

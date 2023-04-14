@@ -1,3 +1,5 @@
 from app.jobs.fetch_forecast_job import FetchForecastJob
 
-FetchForecastJob.execute()
+
+forecast_data = FetchForecastJob.execute()
+print(forecast_data.json())
