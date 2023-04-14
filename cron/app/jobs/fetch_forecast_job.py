@@ -7,9 +7,10 @@ PRAIA_DE_JOAQUINA_PARAMS: dict = {
     "hourly": "windspeed_180m,winddirection_180m"
 }
 
+
 class FetchForecastJob:
     @staticmethod
-    def execute():    
-        response: Response = get(url=OPEN_METEO_URL, params=PRAIA_DE_JOAQUINA_PARAMS)
+    def execute():
+        response: Response = get(
+            url=OPEN_METEO_URL, params=PRAIA_DE_JOAQUINA_PARAMS)
         print(response.text)
-
