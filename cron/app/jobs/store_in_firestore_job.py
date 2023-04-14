@@ -4,12 +4,11 @@ from google.cloud.firestore_v1 import Client
 from google.oauth2 import service_account
 from httpx import Response
 from datetime import datetime
-from app.runner.job_runner import JobRunner
 
 CREDENTIALS_FILE: str = config("GOOGLE_APPLICATION_CREDENTIALS")
 
 
-class StoreInFirestoreJob(JobRunner):
+class StoreInFirestoreJob:
     @staticmethod
     def execute(data: Tuple[Response, datetime]) -> None:
         client: Client = create_session()

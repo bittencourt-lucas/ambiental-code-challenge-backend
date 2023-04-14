@@ -1,6 +1,5 @@
 from datetime import datetime
 from httpx import get, Response
-from app.runner.job_runner import JobRunner
 
 OPEN_METEO_URL: str = "https://api.open-meteo.com/v1/forecast"
 PRAIA_DE_JOAQUINA_PARAMS: dict = {
@@ -10,7 +9,7 @@ PRAIA_DE_JOAQUINA_PARAMS: dict = {
 }
 
 
-class FetchForecastJob(JobRunner):
+class FetchForecastJob:
     @staticmethod
     def execute() -> tuple:
         response: Response = get(
