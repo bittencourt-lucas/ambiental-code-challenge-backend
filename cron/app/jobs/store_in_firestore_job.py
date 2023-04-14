@@ -13,9 +13,11 @@ class StoreInFirestoreJob(JobRunner):
     @staticmethod
     def execute(data: Tuple[Response, datetime]) -> None:
         client: Client = create_session()
+
         response: Response
         timestamp: datetime
         response, timestamp = data
+
         client.collection("openmeteo").document("current_reading").set(
             dict({"time": timestamp, "data": response.json()}))
 
