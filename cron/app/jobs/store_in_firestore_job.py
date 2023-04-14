@@ -10,15 +10,11 @@ CREDENTIALS_FILE: str = config("GOOGLE_APPLICATION_CREDENTIALS")
 
 class StoreInFirestoreJob:
     @staticmethod
-    def execute(data: Tuple[Response, datetime]) -> None:
+    def execute(data: dict) -> None:
         client: Client = create_session()
 
-        response: Response
-        timestamp: datetime
-        response, timestamp = data
-
         client.collection("openmeteo").document("current_reading").set(
-            dict({"time": timestamp, "data": response.json()}))
+            dict({"ultima_consulta": data["ultima_consulta"], "dados": data["dados"]}))
 
 
 def create_session() -> Client:
