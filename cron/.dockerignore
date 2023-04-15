@@ -1,0 +1,7 @@
+# Folders
+.pytest_cache/
+__pycache__/
+
+# Files
+.env
+.env.example
