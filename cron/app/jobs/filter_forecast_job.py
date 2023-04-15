@@ -2,6 +2,12 @@ from datetime import datetime
 from httpx import Response
 
 
+MIN_DIRECTION_DEGREES = 130
+MAX_DIRECTION_DEGREES = 230
+MID_RISK_SPEED_KMH = 15
+HIGH_RISK_SPEED_KMH = 20
+
+
 class FilterForecastJob:
     @staticmethod
     def execute(data: tuple[Response, datetime]) -> dict:
@@ -25,7 +31,7 @@ def process_wind_direction_entries(entries: dict) -> list:
 
 
 def is_wind_direction_dangerous(direction: int) -> bool:
-    return direction >= 130 and direction <= 230
+    return MIN_DIRECTION_DEGREES <= direction <= MAX_DIRECTION_DEGREES
 
 
 def process_wind_speed_entries(entries: list) -> list:
@@ -39,8 +45,8 @@ def process_wind_speed_entries(entries: list) -> list:
 
 
 def is_wind_speed_dangerous(speed: int) -> bool:
-    return speed >= 15
+    return speed >= MID_RISK_SPEED_KMH
 
 
 def should_emit_alert(speed: int) -> bool:
-    return speed > 20
+    return speed > HIGH_RISK_SPEED_KMH
