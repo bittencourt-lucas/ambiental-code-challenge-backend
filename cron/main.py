@@ -1,8 +1,16 @@
-from app.jobs.fetch_forecast_job import FetchForecastJob
-from app.jobs.filter_forecast_job import FilterForecastJob
-from app.jobs.store_in_firestore_job import StoreInFirestoreJob
+import os
+from crontab import CronTab
 
 
-forecast_data = FetchForecastJob.execute()
-formatted_data = FilterForecastJob.execute(forecast_data)
-StoreInFirestoreJob.execute(formatted_data)
+if __name__ == "__main__":
+    NEXT_AT_MINUTE_5 = "5 * * * *"
+
+    venv_path = os.path.dirname(
+        os.path.abspath(__file__)) + "/venv/bin/python3"
+    runner_file = os.path.dirname(
+        os.path.abspath(__file__)) + "/app/runner.py"
+
+    cron = CronTab(user=True)
+    job = cron.new(command=f"{venv_path} {runner_file}")
+    job.setall(NEXT_AT_MINUTE_5)
+    cron.write()
