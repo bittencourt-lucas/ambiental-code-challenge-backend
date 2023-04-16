@@ -4,7 +4,7 @@ from decouple import config
 
 
 if __name__ == "__main__":
-    NEXT_AT_MINUTE_5 = "* * * * *"
+    NEXT_AT_MINUTE_5 = "5 * * * *"
 
     credentials = config("GOOGLE_APPLICATION_CREDENTIALS")
     command_env = config("COMMAND_ENV")

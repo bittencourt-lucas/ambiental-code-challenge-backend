@@ -10,9 +10,9 @@ HIGH_RISK_SPEED_KMH = 20
 
 class FilterForecastJob:
     @staticmethod
-    def execute(data: tuple[Response, datetime]) -> dict:
+    def execute(data: tuple[dict, datetime]) -> dict:
         response, timestamp = data
-        hourly_entries = response.json()["hourly"]
+        hourly_entries = response["hourly"]
 
         valid_entries = process_wind_speed_entries(
             process_wind_direction_entries(hourly_entries))
@@ -49,4 +49,4 @@ def is_wind_speed_dangerous(speed: int) -> bool:
 
 
 def should_emit_alert(speed: int) -> bool:
-    return speed > HIGH_RISK_SPEED_KMH
+    return speed >= HIGH_RISK_SPEED_KMH

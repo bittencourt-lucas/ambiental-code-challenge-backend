@@ -16,4 +16,4 @@ class FetchForecastJob:
         response: Response = get(
             url=OPEN_METEO_URL, params=PRAIA_DE_JOAQUINA_PARAMS)
         timestamp: datetime = datetime.now()
-        return (response, timestamp)
+        return (response.json(), timestamp)
