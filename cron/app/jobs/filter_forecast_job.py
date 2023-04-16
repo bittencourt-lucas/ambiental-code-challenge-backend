@@ -1,5 +1,4 @@
 from datetime import datetime
-from httpx import Response
 
 
 MIN_DIRECTION_DEGREES = 130
