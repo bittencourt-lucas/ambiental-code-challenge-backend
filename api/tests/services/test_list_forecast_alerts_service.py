@@ -14,5 +14,5 @@ def test_list_forecast_alerts_service(mocker):
     output = ListForecastAlertsService.execute()
 
     expected_output = filter_only_alerts(data)
-
+    
     assert output == expected_output

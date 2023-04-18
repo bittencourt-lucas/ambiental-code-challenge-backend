@@ -5,7 +5,7 @@ from google.oauth2 import service_account
 CREDENTIALS_FILE = config("GOOGLE_APPLICATION_CREDENTIALS")
 
 
-class ListForecastAlertsService:
+class ListForecastService:
     @staticmethod
     def execute():
         client: Client = create_session()
@@ -16,17 +16,10 @@ class ListForecastAlertsService:
         if (current_reading is None):
             raise LookupError("No value retrieved.")
 
-        return filter_only_alerts(current_reading)
+        return current_reading
 
 
 def create_session() -> Client:
     credentials = service_account.Credentials.from_service_account_file(
         CREDENTIALS_FILE)
     return Client(credentials=credentials)
-
-
-def filter_only_alerts(current_reading: dict) -> dict:
-    return {
-        "ultima_consulta": current_reading["ultima_consulta"],
-        "dados": [entry["data"] for entry in current_reading["dados"] if entry["alerta"] is True]
-    }
