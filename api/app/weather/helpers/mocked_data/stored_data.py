@@ -1,6 +1,5 @@
 from datetime import datetime, timedelta
 
-
 CURRENT_TIMESTAMP = datetime.now()
 
 

@@ -1,18 +1,12 @@
-from tests.helpers.stored_data import data
 from app.weather.services.list_forecast_service import ListForecastService
+from app.weather.helpers.mocked_data.stored_data import data
+from app.weather.repositories.in_memory.in_memory_repository import InMemoryRepository
 
 
-def test_list_forecast_service(mocker):
-    def mock_execute() -> dict:
-        return data
+def test_list_forecast_service():
+    in_memory_weather_repository = InMemoryRepository()
+    list_alerts_service = ListForecastService(in_memory_weather_repository)
 
-    mocker.patch(
-        "app.weather.services.list_forecast_service.ListForecastService.execute",
-        mock_execute
-    )
+    output = list_alerts_service.execute()
 
-    output = ListForecastService.execute()
-
-    expected_output = data
-
-    assert output == expected_output
+    assert output == data
