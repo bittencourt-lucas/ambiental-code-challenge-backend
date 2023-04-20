@@ -1,15 +1,9 @@
-from decouple import config
 from google.cloud.firestore_v1 import Client
-from google.oauth2 import service_account
-
-CREDENTIALS_FILE = config("GOOGLE_APPLICATION_CREDENTIALS")
 
 
 class ListForecastAlertsService:
     @staticmethod
-    def execute():
-        client: Client = create_session()
-
+    def execute(client: Client):
         current_reading = client.collection("openmeteo").document(
             "current_reading").get().to_dict()
 
@@ -17,12 +11,6 @@ class ListForecastAlertsService:
             raise LookupError("No value retrieved.")
 
         return filter_only_alerts(current_reading)
-
-
-def create_session() -> Client:
-    credentials = service_account.Credentials.from_service_account_file(
-        CREDENTIALS_FILE)
-    return Client(credentials=credentials)
 
 
 def filter_only_alerts(current_reading: dict) -> dict:

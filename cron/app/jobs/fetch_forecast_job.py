@@ -1,7 +1,6 @@
 from datetime import datetime
 from httpx import get, Response
 
-
 OPEN_METEO_URL: str = "https://api.open-meteo.com/v1/forecast"
 PRAIA_DE_JOAQUINA_PARAMS: dict = {
     "latitude": "-27.6289",

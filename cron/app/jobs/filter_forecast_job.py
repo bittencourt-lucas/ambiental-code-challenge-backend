@@ -1,6 +1,5 @@
 from datetime import datetime
 
-
 MIN_DIRECTION_DEGREES = 130
 MAX_DIRECTION_DEGREES = 230
 MID_RISK_SPEED_KMH = 15
