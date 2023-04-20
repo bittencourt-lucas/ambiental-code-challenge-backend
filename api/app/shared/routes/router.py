@@ -1,5 +1,6 @@
 from fastapi import APIRouter
+from app.weather.endpoints.routes.forecast_routes import forecast_router
 
-root_router = APIRouter(prefix='/')
+root_router = APIRouter()
 
-# router.include_router()
+root_router.include_router(forecast_router)
