@@ -1,13 +1,9 @@
-from google.cloud.firestore_v1 import Client
+from app.weather.repositories.abstract_repository import WeatherRepository
 
 
 class ListForecastService:
-    @staticmethod
-    def execute(client: Client):
-        current_reading = client.collection("openmeteo").document(
-            "current_reading").get().to_dict()
+    def __init__(self, repository: WeatherRepository):
+        self.repository = repository
 
-        if (current_reading is None):
-            raise LookupError("No value retrieved.")
-
-        return current_reading
+    def execute(self) -> dict:
+        return self.repository.list_forecast()
