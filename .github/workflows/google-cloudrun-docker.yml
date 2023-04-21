@@ -94,9 +94,9 @@ jobs:
 
       - name: Build and Push Container
         run: |-
-          docker build -f Dockerfile.api -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}-api/api-image:${{ github.sha }}" ./
+          docker build --build-arg gcp_credentials=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }} -f Dockerfile.api -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}-api/api-image:${{ github.sha }}" ./
           docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}-api/api-image:${{ github.sha }}"
-          docker build -f Dockerfile.cron -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}-cron/cron-image:${{ github.sha }}" ./
+          docker build --build-arg gcp_credentials=${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }} -f Dockerfile.cron -t "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}-cron/cron-image:${{ github.sha }}" ./
           docker push "${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}-cron/cron-image:${{ github.sha }}"
 
       # END - Docker auth and build
