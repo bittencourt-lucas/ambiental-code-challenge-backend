@@ -65,7 +65,7 @@ To run the testing suite, make sure you have the requirements installed. Then, y
 
 Build the project image:
 
-`docker build -f Dockerfile.api -t api-python:latest .`
+`docker build -f Dockerfile.local.api -t api-python:latest .`
 
 Create the project container:
 
@@ -94,7 +94,7 @@ To run the testing suite, make sure you have the requirements installed. Then, y
 
 Build the project image:
 
-`docker build -f Dockerfile.cron -t cron-python:latest .`
+`docker build -f Dockerfile.local.cron -t cron-python:latest .`
 
 Create the project container:
 
