@@ -3,10 +3,12 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile.api
+      dockerfile: Dockerfile.local.api
     ports:
       - "8000:8000"
+
+
   cron:
     build:
       context: .
-      dockerfile: Dockerfile.cron
+      dockerfile: Dockerfile.local.cron
