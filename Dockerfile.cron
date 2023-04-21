@@ -15,14 +15,10 @@ COPY requirements.txt .
 # Install requirements
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the GCP Credentials
-COPY credentials/gcp-credentials.json .
-
 # Copy the Cron app
 COPY cron/ ./
 
 # Set environment variables
-ENV GOOGLE_APPLICATION_CREDENTIALS=/app/gcp-credentials.json
 ENV COMMAND_ENV=/usr/local/bin/python3
 ENV OUTPUT_PARAMETERS="> /proc/1/fd/1 2>/proc/1/fd/2"
 
