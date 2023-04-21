@@ -91,3 +91,7 @@ Build the project image:
 Create the project container:
 
 `docker run --name cron-app -d cron-python:latest`
+
+## Questions & Comments
+
+You can contact me through my email `lucsacafieiro@gmail.com`.
