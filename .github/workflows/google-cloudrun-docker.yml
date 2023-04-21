@@ -101,17 +101,22 @@ jobs:
 
       # END - Docker auth and build
 
-      - name: Deploy to Cloud Run
+      - name: Deploy API to Cloud Run
         id: deploy-api
         uses: google-github-actions/deploy-cloudrun@v0
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         with:
           service: ${{ env.SERVICE }}-api
           region: ${{ env.REGION }}
           image: ${{ env.GAR_LOCATION }}-docker.pkg.dev/${{ env.PROJECT_ID }}/${{ env.SERVICE }}:${{ github.sha }}-api
 
-      - name: Deploy to Cloud Run
+
+      - name: Deploy Cron to Cloud Run
         id: deploy-cron
         uses: google-github-actions/deploy-cloudrun@v0
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: ${{ secrets.GOOGLE_APPLICATION_CREDENTIALS }}
         with:
           service: ${{ env.SERVICE }}-cron
           region: ${{ env.REGION }}
