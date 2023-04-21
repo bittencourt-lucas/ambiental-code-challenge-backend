@@ -15,6 +15,8 @@ if __name__ == "__main__":
 
     cron = CronTab(user=True)
     job = cron.new(
+        pre_comment=True,
+        comment="START CRONTAB",
         command=f"{command_env} {runner_file} {output}")
     job.env["GOOGLE_APPLICATION_CREDENTIALS"] = credentials
     job.env["COMMAND_ENV"] = command_env
