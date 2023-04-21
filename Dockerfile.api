@@ -16,7 +16,13 @@ COPY api/ ./
 # Set args
 ARG gcp_credentials
 
+# Create file to store credentials
+RUN touch gcp_credentials.json
+
+# Copy credentials to file
+RUN echo $gcp_credentials >> gcp_credentials.json
+
 # Set environment variables
-ENV GOOGLE_APPLICATION_CREDENTIALS=$gcp_credentials
+ENV GOOGLE_APPLICATION_CREDENTIALS=/app/gcp_credentials.json
 
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
