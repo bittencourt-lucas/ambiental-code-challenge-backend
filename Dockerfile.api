@@ -24,5 +24,6 @@ RUN echo $gcp_credentials >> gcp_credentials.json
 
 # Set environment variables
 ENV GOOGLE_APPLICATION_CREDENTIALS=/app/gcp_credentials.json
+ENV PORT=3000
 
-CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8080"]
+CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", $PORT]
