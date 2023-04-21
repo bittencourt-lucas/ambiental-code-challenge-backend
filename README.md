@@ -5,6 +5,14 @@ This project contains a MonoRepo for two different projects:
 - An API that provides two endpoints.
 - A crontab running a workflow every 5 minutes to gather, process, and store data.
 
+## Live Test the App
+
+You can live test the app by sending a GET request to the following URLs:
+
+`https://ambiental-media-app-api-t6lzheqvfa-rj.a.run.app/previsao`
+
+`https://ambiental-media-app-api-t6lzheqvfa-rj.a.run.app/alerta`
+
 ## Objective
 
 The main goal with this project is to display an array of Software Engineering skills using Python.
