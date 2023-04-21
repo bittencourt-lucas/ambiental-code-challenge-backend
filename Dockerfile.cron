@@ -1,11 +1,6 @@
 # Use Python 3.10 image
 FROM python:3.10-slim
 
-# Install Cron
-RUN apt-get update && \
-  apt-get install -y cron && \
-  rm -rf /var/lib/apt/lists/*
-
 # Set /app as working directory
 WORKDIR /app
 
@@ -27,7 +22,7 @@ ENV COMMAND_ENV='/usr/local/bin/python3'
 ENV OUTPUT_PARAMETERS='> /proc/1/fd/1 2>/proc/1/fd/2'
 
 # Create the crontab
-RUN python main.py
+RUN python app/runner.py
 
 # Start the crontab
 CMD ["cron", "-f"]
