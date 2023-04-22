@@ -102,4 +102,4 @@ Create the project container:
 
 ## Questions & Comments
 
-You can contact me through my email `lucsacafieiro@gmail.com`.
+You can contact me through my email `lucascafieiro@gmail.com`.
